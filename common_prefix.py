@@ -8,7 +8,17 @@ Output: "fl"
 Input: strs = ["dog","racecar","car"]
 Output: ""
 Explanation: There is no common prefix among the input strings.
-"""     
+"""   
+
+"""
+Approach: 
+Compare the characters of the input one by one
+Builds a common prefix string by appending characters that matches across all the strings.
+When it encounters a non-matching character or end of the string, it returns the current prefix string.
+If all characters matches across all the strings, it returns the entire first string as longest common prefix.
+
+
+"""
 from typing import List
 class Solution:
     def longestCommonPrefix(self, strs:List[str]) -> str:
