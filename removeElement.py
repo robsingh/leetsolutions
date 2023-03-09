@@ -13,14 +13,28 @@ Do not allocate extra space for another array. You must do this by modifying the
 in-place with O(1) extra memory.
 """
 from typing import List
+
 class Solution:
     def removeElement(self, nums:List[int], val:int) -> int:
-        k = 0
+        k = 0  # to keep track of the last index of the array
         for i in range(len(nums)):
+            # if current element is not equal to val, then it should be included in modified array
             if nums[i] != val:
-                nums[k] = nums[i]
+                nums[k] = nums[i] #add the current element to the modified array at index k
                 k += 1
         return k
-
+    
+    # def removeElement(self, nums:List[int], val:int) -> int:
+    #     # iterating through the array from both ends
+    #     left, right = 0, len(nums) - 1
+    #     while left <= right:
+    #         if nums[left] == val:
+    #             nums[left], nums[right] = nums[right], nums[left]
+    #             right -= 1
+    #         else:
+    #             left += 1
+    #     return left
+    
+    
 sol = Solution()
 print(sol.removeElement(nums=[3,2,2,3], val=3))
