@@ -16,3 +16,12 @@ s consists of only English letters and spaces ' '.
 There will be at least one word in s.
 """
 
+class Solution:
+    def lengthOfLastWord(self, s:str) -> int:
+        words = s.split()
+        if not words:
+            return 0
+        return len(words[-1])
+
+sol = Solution()
+print(sol.lengthOfLastWord(s='   fly me   to   the moon  '))
