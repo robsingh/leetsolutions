@@ -12,3 +12,16 @@ Output: 2
 Input: nums = [1,3,5,6], target = 2
 Output: 1
 """
+from typing import List
+class Solution:
+    def searchInsert(self, nums:List[int], target: int) -> int:
+        for i in range(len(nums)):
+            if nums[i] == target:
+                return i
+            elif nums[i] > target:
+                return i
+        return len(nums)
+    
+
+sol = Solution()
+print(sol.searchInsert(nums=[1,3,5,6], target= 5))
