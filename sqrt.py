@@ -7,16 +7,31 @@ For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
 """
 
 class Solution:
-    def mysqrt(self, x:int) -> int:
+    # def mysqrt(self, x:int) -> int:  #not so efficient - brute force
+    #     if (x == 0 or x == 1):
+    #         return x
+    #     i = 1
+    #     res = 1
+    #     while res <= x:
+    #         i += 1
+    #         res = i * i
+    #     return i-1
+
+    #using binary search
+    def mysqrt(self,x:int) -> int:
         if (x == 0 or x == 1):
             return x
-        i = 1
-        res = 1
-        while res <= x:
-            i += 1
-            res = i * i
-        return i - 1
+        left = 1
+        right = x
+        while left <= right:
+            mid = (left + right) // 2
+            if mid * mid <= x:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return left - 1
+    
 
 
 sol = Solution()
-print(sol.mysqrt(x=627))
+print(sol.mysqrt(x=8))
