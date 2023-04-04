@@ -13,14 +13,16 @@ class TreeNode:
 class Solution:
     def isSymmetric(self, root:Optional[TreeNode]) -> bool:
         def isMirror(node1,node2):
+            # if both nodes are none, they are mirror of each other
             if not node1 and not node2:
                 return True
-            if not node1 or not node2:
+            # if one of the node is none, or there values are different
+            if not node1 or not node2 or node1.val != node2.val:
                 return False
-            return (node1.val == node2.val and 
-                    isMirror(node1.left, node2.right) and
-                    isMirror(node1.right, node2.left))
+            # recursively check whether left subtree of node1 is a mirror of right subtree of node2, and vice-versa
+            return isMirror(node1.left, node2.right) and isMirror(node1.right, node2.left)
         
+        # if root node is None, trees are symmetric
         if not root:
             return True
         return isMirror(root.left,root.right)
