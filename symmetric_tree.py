@@ -34,7 +34,6 @@ root.left = TreeNode(2)
 root.right = TreeNode(2)
 root.left.left = TreeNode(3)
 root.left.right = TreeNode(4)
-root.left.right = TreeNode(4)
 root.right.left = TreeNode(4)
 root.right.right = TreeNode(3)
 
