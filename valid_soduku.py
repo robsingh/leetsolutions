@@ -13,9 +13,36 @@ Only the filled cells need to be validated according to the mentioned rules.
 from typing import List
 class Solution:
     def isValid(self,board:List[List[str]]) -> bool:
-        pass
+        #check each row
+        for row in board:
+            digits = set()
+            for digit in row:
+                if digit != "." and digit in digits:
+                    return False
+                digits.add(digit)
+        
+        #check each column
+        for col in range(9):
+            digits = set()
+            for row in range(9):
+                digit = board[row][col]
+                if digit != "." and digit in digits:
+                    return False
+                digits.add(digit)
+        
+        #check each sub-box
+        for box_row in range(0,9,3):
+            for box_col in range(0,9,3):
+                digits = set()
+                for row in range(box_row,box_row+3):
+                    for col in range(box_col, box_col+3):
+                        digit = board[row][col]
+                        if digit != "." and digit in digits:
+                            return False
+                        digits.add(digit)
 
-
+        
+        return True
 
 sol = Solution()
 board = [
