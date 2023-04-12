@@ -38,24 +38,15 @@ class Solution:
         start,end = 0,0
 
         for i in range(n):
-            # check for odd length palindromes
-            left,right = i,i
-            while left >= 0 and right < n and s[left] == s[right]:
-                left -= 1
-                right += 1
-            if right - left - 1 > end - start:
-                start = left + 1
-                end = right
-
-            # check for even length palindromes
-            left,right = i,i+1
-            while left >= 0 and right < n and s[left] == s[right]:
-                left -= 1
-                right += 1
-            if right - left - 1 > end - start:
-                start = left + 1
-                end = right
-
+            #check for even and odd length palindromes
+            for left,right in [(i,i), (i,i+1)]:
+                while left >= 0 and right < n and s[left] == s[right]:
+                    left -= 1
+                    right += 1
+                if right - left - 1 > end - start:
+                    start = left + 1
+                    end = right
+        
         return s[start:end]
 
 
