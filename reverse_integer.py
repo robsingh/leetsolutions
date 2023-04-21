@@ -4,12 +4,6 @@ If reversing x causes the value to go outside the signed 32-bit integer range [-
 
 Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
 """
-"""
-Thinking:
-1. Check if an integer is a 32-bit signed integer
- Do not consider trailing zeroes.
-
-"""
 
 class Solution:
     def reverse(self, x:int) -> int:
@@ -22,18 +16,22 @@ class Solution:
         Returns:
             int: reversed signed 32-bit integer, or 0 if the reversed value goes outside the 32-bit range.
         """
-        def is_32_bit_signed(x):
-            return isinstance(x,int) and -2 ** 31 <= x <= 2**31 - 1
+        # check if x is a 32-bit signed integer
+        if x < -2 ** 31 or x > 2 ** 31 - 1:
+            return 0
         
-        if is_32_bit_signed(x):
-            reversed_str =  str(x)[::-1]
-            # check if reversed string represents a 32-bit signed integer
-            if is_32_bit_signed(int(reversed_str)):
-                return int(reversed_str)
-            
-        # if input is not a 32-bit signed integer or reversed value goes  outside the 32-bit range - return 0
+        #convert the integer to a string and reverse it
+        str_x = str(x)
+        if x < 0:
+            reversed_x = int('-' + str_x[:0:-1])
+        else:
+            reversed_x = int(str_x[::-1])
 
-        return 0
+        # check if reversed integer is a 32-bit signed integer
+        if reversed_x < -2 ** 31 or reversed_x > 2 ** 31 - 1:
+            return 0
+        
+        return reversed_x
 
 sol = Solution()
 x = 120
