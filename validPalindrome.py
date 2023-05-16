@@ -21,6 +21,10 @@ import re
 
 class Solution:
     def isPalindrome(self, s:str) -> bool:
+        """
+        \W matches any non-alphanumeric character and
+        underscores with an empty string.
+        """
         conv_string = re.sub('[\W_]+', '', s).lower().strip()
         rev_conv = conv_string[::-1]
 
