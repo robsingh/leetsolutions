@@ -16,23 +16,43 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def preOrderTraversal(self, root:Optional[TreeNode]) -> List[int]:
-        result = []
-        self.preOrderTraversalRecursive(root,result)
-        return result
+    # recursive approach
+    # def preOrderTraversal(self, root:Optional[TreeNode]) -> List[int]:
+    #     result = []
+    #     self.preOrderTraversalRecursive(root,result)
+    #     return result
     
-    def preOrderTraversalRecursive(self, node: Optional[TreeNode], result: List[int]):
-        if node is None:
-            return
+    # def preOrderTraversalRecursive(self, node: Optional[TreeNode], result: List[int]):
+    #     if node is None:
+    #         return
         
-        result.append(node.val) #visit the current node
-        self.preOrderTraversalRecursive(node.left, result)
-        self.preOrderTraversalRecursive(node.right, result)
+    #     result.append(node.val) #visit the current node
+    #     self.preOrderTraversalRecursive(node.left, result)
+    #     self.preOrderTraversalRecursive(node.right, result)
+    # non-recursive approach (using stack)
+    def preOrderTraversal(self, root:Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        stack = [root]
+        result = []
+
+        while stack:
+            node = stack.pop()
+            result.append(node.val)
+
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+
+        return result
 
 
 root = TreeNode(1)
-root.right = TreeNode(2)
-root.right.left = TreeNode(3)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.right = TreeNode(4)
+root.right.right = TreeNode(5)
 
 sol = Solution()
 preorder = sol.preOrderTraversal(root)
