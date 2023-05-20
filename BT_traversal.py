@@ -40,7 +40,7 @@ class Solution:
             node = stack.pop()
             result.append(node.val)
 
-            # we push the right child first because in pre-order traversal, the left subtree is processed
+            # we push the right child first because in pre-order traversal the left subtree is processed
             # before the right subtree (this can be bypassed while using recursive approach)
             if node.right:
                 stack.append(node.right)
