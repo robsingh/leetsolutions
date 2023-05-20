@@ -14,24 +14,38 @@ class TreeNode:
 
 class Solution:
     def postOrderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
+        # if not root:
+        #     return []
         
-        stack = []
-        result = []
-        curr = root
+        # stack = []
+        # result = []
+        # curr = root
 
-        while stack or curr:
-            if curr:
-                stack.append(curr)
-                curr = curr.left or curr.right
-            else:
-                node = stack.pop()
-                result.append(node.val)
-                if stack and stack[-1].left == node:
-                    curr = stack[-1].right
+        # while stack or curr:
+        #     if curr:
+        #         stack.append(curr)
+        #         curr = curr.left or curr.right
+        #     else:
+        #         node = stack.pop()
+        #         result.append(node.val)
+        #         if stack and stack[-1].left == node:
+        #             curr = stack[-1].right
         
+        # return result
+
+        # recursive approach
+
+        result = []
+        self.postOrderRecursive(root,result)
         return result
+    
+    def postOrderRecursive(self, node:Optional[TreeNode], result:List[int]):
+        if node:
+            self.postOrderRecursive(node.left, result)
+            self.postOrderRecursive(node.right, result)
+            result.append(node.val)
+    
+
 
 
 
