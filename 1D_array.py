@@ -13,3 +13,18 @@ nums = [3,1,2,10,1]
 Output = [3,4,6,16,17]
 """
 
+from typing import List
+class Solution:
+    def runningSum(self, nums:List[int]) -> List[int]:
+        running_sum = []
+        total = 0
+        for num in nums:
+            total += num
+            running_sum.append(total)
+        return running_sum
+
+
+
+sol = Solution()
+nums = [3,1,2,10,1]
+print(sol.runningSum(nums))
