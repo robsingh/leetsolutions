@@ -22,27 +22,42 @@ Constraints:
 from typing import List
 
 class Solution:
+    # def longestConsecutive(self, nums: List[int]) -> int:
+    #     if not nums:
+    #         return 0
+        
+    #     num_set = set(nums)
+    #     max_length = 1
+
+    #     for num in num_set:
+    #         # check if current number is start of the sequence
+    #         if num - 1 not in num_set:
+    #             current_num = num
+    #             current_length = 1
+
+    #             # find the length of consecutive sequence
+    #             while current_num + 1 in num_set:
+    #                 current_num += 1
+    #                 current_length += 1
+
+    #             max_length = max(max_length, current_length)
+            
+    #     return max_length
     def longestConsecutive(self, nums: List[int]) -> int:
         if not nums:
             return 0
         
         num_set = set(nums)
-        max_length = 1
-
-        for num in num_set:
-            # check if current number is start of the sequence
+        longest = 1
+        
+        for num in nums:
             if num - 1 not in num_set:
-                current_num = num
-                current_length = 1
+                length = 1
+                while num + length in num_set:
+                    length += 1
+                longest = max(longest, length)
+        return longest
 
-                # find the length of consecutive sequence
-                while current_num + 1 in num_set:
-                    current_num += 1
-                    current_length += 1
-
-                max_length = max(max_length, current_length)
-            
-        return max_length
 
 
 
