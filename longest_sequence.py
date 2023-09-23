@@ -27,39 +27,37 @@ class Solution:
     #         return 0
         
     #     num_set = set(nums)
-    #     max_length = 1
-
-    #     for num in num_set:
-    #         # check if current number is start of the sequence
+    #     longest = 1
+        
+    #     for num in nums:
     #         if num - 1 not in num_set:
-    #             current_num = num
-    #             current_length = 1
-
-    #             # find the length of consecutive sequence
-    #             while current_num + 1 in num_set:
-    #                 current_num += 1
-    #                 current_length += 1
-
-    #             max_length = max(max_length, current_length)
-            
-    #     return max_length
-    def longestConsecutive(self, nums: List[int]) -> int:
+    #             length = 1
+    #             while num + length in num_set:
+    #                 length += 1
+    #             longest = max(longest, length)
+    #     return longest
+    def longestConsecutive(self, nums:List[int]) -> int:
+        """
+        Implementing a diff approach, where I will eliminate the duplicate first,
+        sort them and then calculate the longest consecutive sequence.
+        """
         if not nums:
             return 0
         
         num_set = set(nums)
-        longest = 1
-        
-        for num in nums:
-            if num - 1 not in num_set:
+        num_sort = sorted(num_set)
+
+        length = 1
+        max_length = 1
+
+        for num in num_sort:
+            if num - 1 in num_set:
+                length += 1
+            else:
+                max_length = max(max_length, length)
                 length = 1
-                while num + length in num_set:
-                    length += 1
-                longest = max(longest, length)
-        return longest
-
-
-
+        
+        return max_length
 
 
 sol = Solution()
