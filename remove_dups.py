@@ -28,19 +28,31 @@ nums is sorted in non-decreasing order.
 """
 from typing import List
 class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
-        # initialize two pointers, one for the current position and one for the last non-duplicate position
-        i = 0
-        j = 0
-        # iterate over the array
-        while i < len(nums):
-            # if current element is not a duplicate, move it to the last non-duplicate position
-            if nums[i] != nums[j]:
-                j += 1
-                nums[j] = nums[i]
-            i += 1
-        # length of the array is the index of the last non-duplicate element plus one
-        return j + 1
+    # def removeDuplicates(self, nums: List[int]) -> int:
+        # # initialize two pointers, one for the current position and one for the last non-duplicate position
+        # i = 0
+        # j = 0
+        # while i < len(nums):
+        #     # if current element is not a duplicate, move it to the last non-duplicate position
+        #     if nums[i] != nums[j]:
+        #         j += 1
+        #         nums[j] = nums[i]
+        #     i += 1
+        # # length of the array is the index of the last non-duplicate element plus one
+        # return j + 1
+
+    def removeDuplicates(self, nums:List[int]) -> int:
+        if not nums:
+            return 0
+        pointer = 1
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]:
+                nums[pointer] = nums[i]
+                pointer += 1
+
+        return pointer
+    
+    # time complexity - O(n) - since we iterate through the array once, the time complexity is linear. 
 
 sol = Solution()
 print(sol.removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
