@@ -16,11 +16,16 @@ from typing import List
 from collections import Counter
 class Solution:
     def singleNumber(self, nums:List[int]) -> int:
-        count_each = Counter(nums)
-        for key,value in count_each.items():
-            if value == 1:
-                return key
-
+        # count_each = Counter(nums)
+        # for key,value in count_each.items():
+        #     if value == 1:
+        #         return key
+        
+        #another method - more memory efficient since it is not iterating through a dict
+        result = 0
+        for num in nums:
+            result ^= num
+        return result
 
 nums = [2,2,1]
 sol = Solution()
