@@ -38,6 +38,15 @@ class Solution:
             result.append(nums[nums[i]])
         return result 
 
+#another solution
+'''class Solution:
+    def buildArray(self, nums: List[int]) -> List[int]:
+        ans = []
+        for num in range(len(nums)):
+            value_check = nums[num]
+            ans.append(nums[value_check])
+        return ans'''
+
 sol = Solution()
 nums = [5,0,1,2,3,4]
 print(sol.buildArray(nums))
