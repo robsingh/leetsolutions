@@ -29,7 +29,7 @@ def rising_temperature(weather: pd.DataFrame) -> pd.DataFrame:
     #find all the rows where current day's temperature is greater than the previous day
     result = weather[weather['temperature'] > weather['prev_temperature']]
 
-    return result['id']
+    return result[['id']]
 
 data = {
     'id': [1,2,3,4],
