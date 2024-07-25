@@ -20,16 +20,23 @@ Write a solution to find all dates' Id with higher temperatures compared to its 
 import pandas as pd
 
 def rising_temperature(weather: pd.DataFrame) -> pd.DataFrame:
-    #ensure df is sorted by 'recordDate'
-    weather = weather.sort_values(by='recordDate')
+    # ensure the recordDate column is in datetime format
+    weather['recordDate'] = pd.to_datetime(weather['recordDate'])
 
-    # shift the temperature column to get the previous day's temperature
-    weather['prev_temperature'] = weather['temperature'].shift(1)
+    #sort the df by recordDate
+    weather = weather.sort_values(by="recordDate")
 
-    #find all the rows where current day's temperature is greater than the previous day
-    result = weather[weather['temperature'] > weather['prev_temperature']]
+    #calculate the difference in temperatures
+    weather['temp_diff'] = weather['temperature'].diff()
+    
+    #calculate the difference in dates
+    weather['date_diff'] = weather['recordDate'].diff().dt.days
+
+    # filter rows with rising temperature and consecutive dates
+    result = weather[(weather['temp_diff'] > 0) & (weather['date_diff'] == 1)]
 
     return result[['id']]
+    
 
 data = {
     'id': [1,2,3,4],
