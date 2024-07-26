@@ -25,13 +25,6 @@ from typing import List
 
 class Solution:
     def rob(self, nums:List[int]) -> int:
-        # even_elements = sum(nums[::2])
-        # odd_elements = sum(nums[1::2])
-
-        # if even_elements > odd_elements:
-        #     return even_elements
-        # else:
-        #     return odd_elements
         if not nums:
             return 0
         prev_max = 0
