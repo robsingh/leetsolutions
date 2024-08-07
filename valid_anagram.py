@@ -27,7 +27,7 @@ class Solution:
         #     else:
         #         return False
 
-
+    #if inputs contains Unicode characters
     def isAnagram(self, s:str, t:str) -> bool:
         if len(s.lower()) != len(t.lower()):
             return False
@@ -40,6 +40,7 @@ class Solution:
                 char_count[code_point] += 1
             else:
                 char_count[code_point] = 1
+            # print(char_count)
 
         #check if each character in t appears same times as that in s
         for char in t:
@@ -50,8 +51,7 @@ class Solution:
                     return False
             else:
                 return False
-            
-
+        
         return True
 
 
