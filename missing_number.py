@@ -28,20 +28,25 @@ n == nums.length
 
 class Solution:
     def missingNumber(self, nums) -> int:
-        #sort the array
-        nums.sort()
+        # O(n logn) approach
+        # nums.sort()
 
-        for i in range(len(nums)):
-            #if the current number does not match the index, return the index as missing number
-            if nums[i] != i:
-                return i
+        # for i in range(len(nums)):
+        #     # if the current number does not match the index, return the index as missing number
+        #     if nums[i] != i:
+        #         return i
             
-        #if all numbers match their index, the missing number is n
-        return len(nums)
+        # # if all numbers match their index, the missing number is n
+        # return len(nums)
 
+        # O(n)
+        n = len(nums)
+        total_sum = n * (n + 1) // 2
+        actual_sum = sum(nums)
+        return total_sum - actual_sum
 
 
 
 sol = Solution()
-nums = [1,0]
+nums = [3,0,1]
 print(sol.missingNumber(nums))
