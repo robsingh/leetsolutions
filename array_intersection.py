@@ -9,7 +9,16 @@ Output: [2]
 
 class Solution:
     def intersection(self, nums1, nums2):
-        return list(set(nums1) & set(nums2))
+        # return list(set(nums1) & set(nums2))
+        
+        # another approach - O(n+m), n and m are size of the arrays.
+        set_nums1 = set(nums1)
+        result = set()
+
+        for num in nums2:
+            if num in set_nums1:
+                result.add(num)
+        return list(result)
 
 
 
