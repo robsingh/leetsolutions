@@ -2,17 +2,25 @@
 
 ## Description
 
-This repository contains solutions to the 'free' questions on coding platform Leetcode. I do not have the premium version of Leetcode. 
-It contains solutions to problems of all topics, be it Array, String, Hash Table, Graphs and what not.
+This repository contains my solutions to the free problems on Leetcode. Since I do not have access to the premium version, the focus is solely on publicly available questions.
 
-## Languages or Frameworks used
+## Problem Categories
 
-I have submitted my solutions in Python, since my focus is on Python at this point of time.
+The solutions cover a wide range of topics, including:
+* Arrays
+* Strings
+* Hash Tables
+* Graphs
+* And more!
+
+## Language
+
+All solutions are implemented in Python, as I am currently focusing on mastering this language.
 
 ## Contributions
 
-If you would like to contribute to this repository in any possible way, be it helping writing better code, or anything, please free to raise a PR. 
-Thank you.
+Contributions are welcome! If you'd like to help improve the code or add new solutions, feel free to open a Pull Request (PR). Any feedback or suggestions for writing better code are highly appreciated.
 
+Thank you!
 
 
