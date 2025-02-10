@@ -18,27 +18,19 @@ def check_palindrome(x):
     if x < 0:
         return False
     
-    # Counting the number of digits in x
-    num_digits = 0
-    temp = x
-    while temp > 0:
-        num_digits += 1
-        temp = temp // 10
+    original_num = x
+    reverse_num = 0
 
-    # Compare the leftmost and rightmost digits
-    left = 10 ** (num_digits - 1)
-    right = 1
-    while left > right:
-        if (x//left) % 10 != (x//right) % 10:
-            return False
-        
-        left = left // 10
-        right = right * 10
+    while x > 0:
+        remainder = x % 10
+        reverse_num = (reverse_num * 10) + remainder
+        x //= 10
 
-    return True
+    if original_num == reverse_num:
+        return True
+    return False
 
-
-
+    
 print(check_palindrome(121))  # Output: True
 print(check_palindrome(675))  # Output: False
 print(check_palindrome(1667)) # Output: False
