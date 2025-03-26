@@ -23,8 +23,5 @@ class Solution:
                 values[value] = key
 
 
-
-
-
 sol = Solution()
 print(sol.twoSum(nums=[2,7,11,15], target=9))
