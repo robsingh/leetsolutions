@@ -12,6 +12,13 @@ Output: [0,1]
 Explanation: Because nums[0] + nums[1] == 9, we return [0, 1]
 """
 
+''''
+* We use an empty dictionary to store value as keys and their indices as values.
+* For each number in the array, we calculate the complement (target - num).
+* If the ccomplement exist in the dictionary, we return its index along with the current index.
+* Otherwise, we store the current number and its index in the dictionary.
+'''
+
 from typing import List
 class Solution:
     def twoSum(self, nums: List[int], target:int) -> List[int]:
