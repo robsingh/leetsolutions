@@ -12,7 +12,6 @@ class Solution:
                 return True
             seen.add(num)
         return False
-    
 
 sol = Solution()
 # print(sol.containsDuplicate(nums=[1,2,2,3,4,1]))
@@ -35,7 +34,7 @@ class TestcontainsDuplicate(unittest.TestCase):
     
     def test_single_element(self):
         self.assertFalse(sol.containsDuplicate([5]))
-        
+
 
 if __name__ == '__main__':
     unittest.main()
