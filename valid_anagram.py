@@ -15,12 +15,9 @@ Output: false
 
 class Solution:
     # def isAnagram(self, s:str, t:str) -> bool:
-        # s_lower = s.lower()   (O(n(logn)))
-        # t_lower = t.lower()
-
-        # if len(s_lower) == len(t_lower):
-        #     sorted_s = sorted(s_lower)
-        #     sorted_t = sorted(t_lower)
+        # if len(s) == len(t):
+        #     sorted_s = sorted(s)
+        #     sorted_t = sorted(t)
 
         #     if sorted_s == sorted_t:
         #         return True
@@ -28,26 +25,25 @@ class Solution:
         #         return False
 
     #if inputs contains Unicode characters
+    # Time - O(n), Space - O(n)
     def isAnagram(self, s:str, t:str) -> bool:
-        if len(s.lower()) != len(t.lower()):
+        if len(s) != len(t):
             return False
         
         #create a dictionary to count the occurrences of each Unicode
         char_count = {}
         for char in s:
-            code_point = ord(char)
-            if code_point in char_count:
-                char_count[code_point] += 1
+            if char in char_count:
+                char_count[char] += 1
             else:
-                char_count[code_point] = 1
+                char_count[char] = 1
             # print(char_count)
 
         #check if each character in t appears same times as that in s
         for char in t:
-            code_point = ord(char)
-            if code_point in char_count:
-                char_count[code_point] -= 1
-                if char_count[code_point] < 0:
+            if char in char_count:
+                char_count[char] -= 1
+                if char_count[char] < 0:
                     return False
             else:
                 return False
